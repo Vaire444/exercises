@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harjutamiseks</title>
+  </head>
+  <body>
+    <h3>Liitmine</h3>
+    <p>
+      1. Lihtne liitmine – teha vorm kus on kolm lahtrit: väärtus1, väärtust2 ja
+      tulemuse lahter. Lisaks on nupp, millel vajutades liidetakse lahtritest
+      väärtus1 ja 2 asjad ja pannakse lahtrisse tulemus
+    </p>
+    <input id="add1" type="text" value=""  placeholder="Sisesta number " /> +
+    <input id="add2" type="text" value="" placeholder="Sisesta number" /> =
+    <input id="resultAdd" type="text" value="" placeholder="Vastus" disabled />
+    <button id="calcAdd" disabled="true">Arvuta</button>
+    <button id="emptyAdd" hidden="true">Tühjenda</button>
+    <h3>Lahutamine</h3>
+    <p>2. Sama nagu punkt 1 aga nüüd teostame lahutamise</p>
+    <input id="subtract1" type="text" placeholder="Sisesta number"/> -
+    <input id="subtract2" type="text" placeholder="Sisesta number"/> =
+    <input id="subtractRes" type="text" placeholder="Vastus" disabled/>
+    <button id="calcSubBtn" disabled="true" >Arvuta</button>
+    <button id="resetSubtract" hidden="true">Tühjenda</button>
+    <h3>Korrutamine</h3>
+    <p>3. Sama nagu punkt 1 aga nüüd teostame korrutamise</p>
+    <input id="subtract1" type="text" placeholder="Sisesta number"/> -
+    <input id="subtract2" type="text" placeholder="Sisesta number"/> =
+    <input id="subtractRes" type="text" placeholder="Vastus" disabled/>
+    <button id="calcSubBtn" disabled="true" >Arvuta</button>
+    <button id="resetSubtract" hidden="true">Tühjenda</button>
+    <h3>Jagamine</h3>
+    <p>4. Sama nagu punkt 1 aga nüüd teostame jagamise. PS! 0-ga oskab jagada ainult Chuck Norris, seega proovi nii, et JS katki ei lähe
+    </p>
+    <input id="subtract1" type="text" placeholder="Sisesta number"/> -
+    <input id="subtract2" type="text" placeholder="Sisesta number"/> =
+    <input id="subtractRes" type="text" placeholder="Vastus" disabled/>
+    <button id="calcSubBtn" disabled="true" >Arvuta</button>
+    <button id="resetSubtract" hidden="true">Tühjenda</button>
+
+
+
+</body>
+
+
+
+    <script>
+      const add1 = document.getElementById("add1");
+      const add2 = document.getElementById("add2");
+      const resultAdd = document.getElementById("resultAdd");
+      const addBtn = document.getElementById("calcAdd");
+      const emptyAddBtn = document.getElementById("emptyAdd");
+
+      const subtract1 = document.getElementById("subtract1")
+      const subtract2 = document.getElementById("subtract2")
+      const subtractRes = document.getElementById("subtractRes")
+      const calcSubBtn = document.getElementById("calcSubBtn")
+      const emptySubtractBtn = document.getElementById("resetSubtract")
+
+      add1.addEventListener("keyup", validateAddForm);
+      add2.addEventListener("keyup", validateAddForm);
+      addBtn.addEventListener("click", calculateAdd);
+      emptyAddBtn.addEventListener("click", resetAdd);
+
+      subtract1.addEventListener("keyup", validateSubForm)
+      subtract2.addEventListener("keyup", validateSubForm)
+      calcSubBtn.addEventListener("click", calcSubtract)
+      emptySubtractBtn.addEventListener("click", resetSubtract)
+
+
+      function validateAddForm() {
+        let firstAddNum = Number(add1.value);
+        let secAddNum = Number(add2.value);
+
+        if (
+          firstAddNum != "" &&
+          secAddNum != "" &&
+          /[+-]?\d+\.?\d*/.test(firstAddNum) &&
+          /[+-]?\d+\.?\d*/.test(secAddNum)
+        ) {
+          addBtn.disabled = false;
+        } else {
+          addBtn.disabled = true;
+        }
+      }
+
+      function calculateAdd() {
+        let firstAddNum = parseFloat(add1.value);
+        let secAddNum = parseFloat(add2.value);
+        let sumAdd = firstAddNum + secAddNum;
+        resultAdd.value = sumAdd;
+        addBtn.hidden = true;
+        add1.disabled = true;
+        add2.disabled = true;
+        emptyAddBtn.hidden = false;
+      }
+
+      function resetAdd() {
+        add1.disabled = false;
+        add2.disabled = false;
+        addBtn.disabled = true;
+        addBtn.hidden = false;
+        emptyAddBtn.hidden = true;
+        add1.value = "";
+        add2.value = "";
+        resultAdd.value = "";
+      }
+
+      function validateSubForm() {
+            let firstSubNum = subtract1.value;
+            let secSubNum = subtract2.value;
+            if (firstSubNum != '' && secSubNum != '' && /^[0-9]+$/.test(firstSubNum) && /^[0-9]+$/.test(secSubNum)) {
+              calcSubBtn.disabled = false;
+            } else {
+              calcSubBtn.disabled = true;
+            }
+        };
+
+      function calcSubtract() {
+        let firstSubNum = parseFloat(subtract1.value);
+        let secSubNum = parseFloat(subtract2.value);
+        let sumSub = firstSubNum - secSubNum;
+        subtractRes.value = sumSub;
+        calcSubBtn.hidden = true;
+        // subtractRes.disabled = true;
+        subtract1.disabled = true;
+        subtract2.disabled = true;
+        emptySubtractBtn.hidden = false;
+      }
+
+      function resetSubtract() {
+        subtract1.disabled = false;
+        subtract2.disabled = false;
+        calcSubBtn.disabled = true;
+        calcSubBtn.hidden = false;
+        emptySubtractBtn.hidden = true;
+        subtract1.value = "";
+        subtract2.value = "";
+        subtractRes.value = "";
+      }
+
+
+      let firstSubtractNum = Number(add1.value);
+        let SecSubtractNum = Number(add2.value);
+
+    </script>
+  </body>
+</html>

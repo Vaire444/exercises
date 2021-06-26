@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liitmine</title>
+  </head>
+
+  <body>
+    <h3>Liitmine</h3>
+    <p>
+      1. Lihtne liitmine – teha vorm kus on kolm lahtrit: väärtus1, väärtust2 ja
+      tulemuse lahter. Lisaks on nupp, millel vajutades liidetakse lahtritest
+      väärtus1 ja 2 asjad ja pannakse lahtrisse tulemus
+    </p>
+    <input id="add1" type="text" value="" , placeholder="Sisesta number" /> +
+    <input id="add2" type="text" value="" , placeholder="Sisesta number" /> =
+    <input id="result" type="text" value="" , placeholder="Vastus" disabled />
+    <button id="calc" disabled="true">Arvuta</button>
+    <button id="empty" hidden="true">Tühjenda</button>
+
+    <script>
+      const add1 = document.getElementById("add1");
+      const add2 = document.getElementById("add2");
+      const result = document.getElementById("result");
+      const calcBtn = document.getElementById("calc");
+      const emptyBtn = document.getElementById("empty");
+
+      add1.focus();
+
+      add1.addEventListener("keyup", validateForm);
+      add2.addEventListener("keyup", validateForm);
+      calcBtn.addEventListener("click", calculation);
+      emptyBtn.addEventListener("click", reset);
+
+      function validateForm() {
+        let firstNumber = Number(add1.value);
+        let secondNumber = Number(add2.value);
+        if (
+          firstNumber != "" &&
+          secondNumber != "" &&
+          /[+-]?\d+\.?\d*/.test(firstNumber) &&
+          /[+-]?\d+\.?\d*/.test(secondNumber)
+        ) {
+          calcBtn.disabled = false;
+        } else {
+          calcBtn.disabled = true;
+        }
+      }
+
+      function calculation() {
+        let firstNum = parseFloat(add1.value);
+        let secondNum = parseFloat(add2.value);
+        let sum = firstNum + secondNum;
+        result.value = sum;
+        calcBtn.hidden = true;
+        add1.disabled = true;
+        add2.disabled = true;
+        emptyBtn.hidden = false;
+      }
+
+      function reset() {
+        add1.disabled = false;
+        add2.disabled = false;
+        calcBtn.disabled = true;
+        calcBtn.hidden = false;
+        emptyBtn.hidden = true;
+        add1.value = "";
+        add2.value = "";
+        result.value = "";
+        add1.focus();
+      }
+    </script>
+  </body>
+</html>
