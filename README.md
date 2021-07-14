@@ -1,6 +1,6 @@
 1.  Lihtne liitmine – teha vorm kus on kolm lahtrit: väärtus1, väärtust2 ja tulemuse lahter. Lisaks on nupp, millel vajutades liidetakse lahtritest väärtus1 ja 2 asjad ja pannakse lahtrisse tulemus
 
-![liitmine](./liitmine.png)
+![liitmine](./images/liitmine.png)
 
 2. Sama nagu punkt 1 aga nüüd teostame korrutamise
 
@@ -8,13 +8,13 @@
 
 4. Reaalne kalkulaator: Kasutajale kuvatakse väärtust1, siis valikmenüü tehetega (Liitmine, lahutamine, korrutamine ja jagamine), siis lahter teise väärtusega ning kolmas lahter kuhu tulemus kirjutatakse ning lõpuks nupp, mis teostab vastava tehte.
 
-![kalkulaator](./kalkulaator.png)
+![kalkulaator](./images/kalkulaator.png)
 
 5. Ruutvõrrandi lahendamine. https://www.taskutark.ee/harjuta/ruutvorrand-ja-selle-lahendamine/
 
 Tulemuseks kuvada mõlemad X vääärtused
 
-![ruutvõrrand](./tundmatuga võrrand.png)
+![ruutvõrrand](./images/tundmatuga võrrand.png)
 
 6. Lugeda ära palju on tekstis mingit tähte. Kasutajal on kaks lahtrit, ühte sisestab teksti ja teise tähe. Tulemuseks kirjutatakse mitu vastavat tähte esines antud tekstis
 
