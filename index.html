@@ -45,6 +45,25 @@
     <input id="divideRes" type="text" placeholder="Vastus" disabled />
     <button id="calcDivideBtn" disabled="true">Arvuta</button>
     <button id="resetDivide" hidden="true">Tühjenda</button>
+
+    <h3>Kalkulaator</h3>
+    <p>5. Reaalne kalkulaator: Kasutajale kuvatakse väärtust1, siis valikmenüü tehetega (Liitmine, lahutamine, korrutamine ja jagamine), siis lahter teise väärtusega ning kolmas lahter kuhu tulemus kirjutatakse ning lõpuks nupp, mis teostab vastava tehte.</p>
+    <input id="value1" type="text" placeholder="Sisesta number" /> 
+      <select id="calculation" name="calculation">
+      <option value="addition">+</option>
+      <option value="subtraction">-</option>
+      <option value="multiplication">x</option>
+      <option value="division">/</option>
+    </select> 
+    <input id="value2" type="text" placeholder="Sisesta number" /> =
+    <input id="value" type="text" placeholder="Vastus" disabled />
+    <button id="calcValueBtn" disabled="true">Arvuta</button>
+    <button id="resetValue" hidden="true">Tühjenda</button>
+
+    <h3>Ruutvõrrand</h3>
+    <p>6. Ruutvõrrandi lahendamine. <a href="https://www.taskutark.ee/harjuta/ruutvorrand-ja-selle-lahendamine/" target="_blank">Ruutvõrrand ja selle lahendamine</a>
+    Tulemuseks kuvada mõlemad X väärtused</p>
+
   </body>
   <script>
     const add1 = document.getElementById("add1");
@@ -71,6 +90,13 @@
     const calcDivideBtn = document.getElementById("calcDivideBtn");
     const emptyDivideBtn = document.getElementById("resetDivide");
 
+    const value1 = document.getElementById("value1")
+    const value2 = document.getElementById("value2")
+    const value = document.getElementById("value")
+    const calculation = document.getElementById("calculation")
+    const calcValueBtn = document.getElementById("calcValueBtn")
+    const resetValueBtn = document.getElementById("resetValue")
+
     add1.addEventListener("keyup", validateAddForm);
     add2.addEventListener("keyup", validateAddForm);
     addBtn.addEventListener("click", calculateAdd);
@@ -91,14 +117,20 @@
     calcDivideBtn.addEventListener("click", calcDivide);
     emptyDivideBtn.addEventListener("click",resetDivide);
 
+    value1.addEventListener("keyup", validateForm)
+    value2.addEventListener("keyup", validateForm)
+    calculation.addEventListener("change", validateForm)
+    calcValueBtn.addEventListener("click", calcValue)
+    resetValueBtn.addEventListener("click", resetValue)
+
     function validateAddForm() {
-      let firstNum = Number(add1.value);
-      let secNum = Number(add2.value);
+      let firstNum = add1.value;
+      let secNum = add2.value;
       if (
         firstNum != "" &&
         secNum != "" &&
-        /[+-]?\d+\.?\d*/.test(firstNum) &&
-        /[+-]?\d+\.?\d*/.test(secNum)
+        /^[0-9]+$/.test(firstNum) &&
+              /^[0-9]+$/.test(secNum)
       ) {
         addBtn.disabled = false;
       } else {
@@ -110,7 +142,7 @@
       let firstAddNum = parseFloat(add1.value);
       let secAddNum = parseFloat(add2.value);
       let sumAdd = firstAddNum + secAddNum;
-      resultAdd.value = sumAdd;
+      resultAdd.value = sumAdd.toFixed(2);
       addBtn.hidden = true;
       add1.disabled = true;
       add2.disabled = true;
@@ -129,13 +161,13 @@
     }
 
     function validateSubForm() {
-      let firstNum = Number(subtract1.value);
-      let secNum = Number(subtract2.value);
+      let firstNum = subtract1.value;
+      let secNum = subtract2.value;
       if (
         firstNum != "" &&
         secNum != "" &&
         /^[0-9]+$/.test(firstNum) &&
-        /^[0-9]+$/.test(secNum)
+              /^[0-9]+$/.test(secNum)
       ) {
         calcSubBtn.disabled = false;
       } else {
@@ -147,9 +179,8 @@
       let firstSubNum = parseFloat(subtract1.value);
       let secSubNum = parseFloat(subtract2.value);
       let sumSub = firstSubNum - secSubNum;
-      subtractRes.value = sumSub;
+      subtractRes.value = sumSub.toFixed(2);
       calcSubBtn.hidden = true;
-      // subtractRes.disabled = true;
       subtract1.disabled = true;
       subtract2.disabled = true;
       emptySubtractBtn.hidden = false;
@@ -168,28 +199,28 @@
 
     function validateMultiplyForm() {
       let firstNum = multiply1.value;
-      let SecNum = multiply2.value;
+      let secNum = multiply2.value;
       if (firstNum !== '' && 
-      SecNum !== '' &&
+      secNum !== '' &&
              /^[0-9]+$/.test(firstNum) &&
-              /^[0-9]+$/.test(SecNum)) {
+              /^[0-9]+$/.test(secNum)) {
         calcMultiplyBtn.disabled = false;
       } else {
         calcMultiplyBtn.disabled = true;
       }
     }
     function calcMultiply() {
-            let firstNum = parseFloat(multiply1.value);
-            let secondNum = parseFloat(multiply2.value);
+            let firstNum = multiply1.value;
+            let secondNum = multiply2.value;
             let sum = firstNum * secondNum;
-            multiplyRes.value = sum;
+            multiplyRes.value = sum.toFixed(2);
             calcMultiplyBtn.hidden = true;
             multiply1.disabled = true;
             multiply2.disabled = true;
             emptyMultiplyBtn.hidden = false;
         };
 
-        function resetMultiply() {
+    function resetMultiply() {
           multiply1.disabled = false;
           multiply2.disabled = false;
           emptyMultiplyBtn.hidden = true;
@@ -202,8 +233,8 @@
         }
 
     function validateDivideForm() {
-      let firstNum = Number(divide1.value);
-      let secNum = Number(divide2.value);
+      let firstNum = divide1.value;
+      let secNum = divide2.value;
       if (firstNum != "" && secNum != "" && /[+-]?([0-9]*[.])?[0-9]+$/.test(firstNum) && /[+-]?([0-9]*[.])?[0-9]+$/.test(secNum)) {
         calcDivideBtn.disabled = false;
             } else {
@@ -216,15 +247,14 @@
             let firstNum = parseFloat(divide1.value);
             let secondNum = parseFloat(divide2.value);
             let sum = firstNum / secondNum;
-            console.log(sum)
-            divideRes.value = sum;
+            divideRes.value = sum.toFixed(2);
             calcDivideBtn.hidden = true;
             divide1.disabled = true;
             divide2.disabled = true;
             emptyDivideBtn.hidden = false;
         };
 
-        function resetDivide() {
+    function resetDivide() {
           divide1.disabled = false;
           divide2.disabled = false;
           emptyDivideBtn.hidden = true;
@@ -235,5 +265,68 @@
             divideRes.value = "";
             divide1.focus();
         }
+
+    function validateForm(){
+      console.log("funk algas " + calculation.value)
+      let firstNum = value1.value;
+      let secNum = value2.value;
+      if (calculation.value == "addition" || calculation.value == "subtraction" || calculation.value == "multiplication"
+      ){
+        if ( firstNum != "" && secNum != "" &&  /^[0-9]+$/.test(firstNum) &&
+              /^[0-9]+$/.test(secNum))
+        {
+          calcValueBtn.disabled = false;
+        } else {
+              calcValueBtn.disabled = true;
+      }        
+      }
+      else if(calculation.value == "division" ){
+        console.log("test")
+        if (firstNum != "" && secNum != "" && /[+-]?([1-9]*[.])?[0-9]+$/.test(firstNum) && /[+-]?([1-9]*[.])?[1-9]+$/.test(secNum))
+         {
+          calcValueBtn.disabled = false;
+        } else {
+              calcValueBtn.disabled = true;              
+      }        
+      } else{
+        calcValueBtn.disabled = true;
+      }
+    }
+
+    function calcValue() {
+      let firstAddNum = parseFloat(value1.value);
+      let secAddNum = parseFloat(value2.value);
+      if (calculation.value == "addition"){
+        let sum = firstAddNum + secAddNum;
+        value.value = sum.toFixed(2);
+      }else if(calculation.value == "subtraction"){
+        let sum = firstAddNum - secAddNum;
+        value.value = sum.toFixed(2);
+      }else if(calculation.value == "multiplication"){
+        let sum = firstAddNum * secAddNum;
+        value.value = sum.toFixed(2);
+      }else{
+        let sum = firstAddNum / secAddNum;
+        value.value = sum.toFixed(2);
+      }
+      
+      calcValueBtn.hidden = true;
+      value1.disabled = true;
+      value2.disabled = true;
+      calculation.disabled = true
+      resetValueBtn.hidden = false;
+    }
+    function resetValue() {
+      value1.disabled = false;
+      value2.disabled = false;
+      resetValueBtn.hidden = true;
+      calcValueBtn.hidden = false;
+      calcValueBtn.disabled = true;
+      calculation.disabled = false;
+      value1.value = "";
+      value2.value = "";
+      value.value = "";
+    }
+
   </script>
 </html>
