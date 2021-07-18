@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Ruutvõrrand</h3>
+    <p>
+      6. Ruutvõrrandi lahendamine.
+      <a
+        href="https://www.taskutark.ee/harjuta/ruutvorrand-ja-selle-lahendamine/"
+        target="_blank"
+        >Ruutvõrrand ja selle lahendamine</a
+      >
+      Tulemuseks kuvada mõlemad x väärtused
+      <br />
+      Standardne ruutvõrrandi vorm on:
+      <br />
+      ax<sup>2</sup> + bx + c = 0, kus a on ruutliikme kordaja (a &#8800 0),b on lineaarliikme kordaja ja c on vabaliige
+    </p>
+
+    
+    <input id="val1" type="text" value="" , placeholder="Sisesta number a" />x<sup
+      >2</sup
+    >
+    + <input id="val2" type="text" value="" , placeholder="Sisesta number b" />x +
+    <input id="val3" type="text" value="" , placeholder="Sisesta number c" /> = 0
+    <button id="calcQuadEq" disabled="true">Arvuta x väärtused</button>
+    <button id="resetQuadEq" hidden="true">Tühjenda</button>
+    <br>
+    <br>
+    <h4> <a id="x1val" hidden="true" >Vastus: <br>x<sub>1</sub> = </a><a id="x1"></a><br> 
+    <a id="x2val" hidden="true" >x<sub>2</sub> = </a><a id="x2"></a></h4>
+
+  </body>
+  <script>
+    const val1 = document.getElementById("val1");
+    const val2 = document.getElementById("val2");
+    const val3 = document.getElementById("val3");
+    const calcQuadEq = document.getElementById("calcQuadEq");
+    const resetQuadEq = document.getElementById("resetQuadEq");
+    const x1 = document.getElementById("x1");
+    const x2 = document.getElementById("x2");
+    const x1val = document.getElementById("x1val");
+    const x2val = document.getElementById("x2val")
+
+    val1.addEventListener("keyup", validation);
+    val2.addEventListener("keyup", validation);
+    val3.addEventListener("keyup", validation);
+    calcQuadEq.addEventListener("click", calcQuadEqVal);
+    resetQuadEq.addEventListener("click", resetQuadEqVal);
+
+    function validation() {
+      let num1 = val1.value;
+      let num2 = val2.value;
+      let num3 = val3.value;
+      if (
+        num1 !== "" &&
+        num2 !== "" &&
+        num3 !== "" &&
+        /[+-]?([1-9]*[.])?[1-9]+$/.test(num1) &&
+        /[+-]?[0-9]+$/.test(num2) &&
+        /[+-]?[0-9]+$/.test(num3)
+      ) {
+        calcQuadEq.disabled = false;
+      } else {
+        calcQuadEq.disabled = true;
+      }
+    }
+
+    function calcQuadEqVal() {
+      let a = val1.value;
+      let b = val2.value;
+      let c = val3.value;
+
+      let root1 = null
+      let root2 = null 
+
+      let discriminant = b * b - 4 * a * c;
+
+      if (discriminant > 0){
+        root1 = ((-b + Math.sqrt(discriminant)) / (2 * a)).toFixed(2);
+        root2 = ((-b - Math.sqrt(discriminant)) / (2 * a)).toFixed(2);
+        document.getElementById("x1").innerHTML = `${root1}`
+        document.getElementById("x2").innerHTML = `${root2}`
+        showValues()
+        
+      }else if (discriminant == 0){
+        root1 = root2 = (-b / (2 * a)).toFixed(2);
+        document.getElementById("x1").innerHTML = `${root1}`
+        document.getElementById("x2").innerHTML = `${root2}`
+        showValues()
+
+      }else {
+        document.getElementById("x1").innerHTML = "Lahend puudub"
+        document.getElementById("x2").innerHTML = "Lahend puudub"
+        showValues()
+
+      }
+
+      function showValues(){
+        val1.disabled = true;
+        val2.disabled = true;
+        val3.disabled = true;
+        calcQuadEq.hidden = true;
+        resetQuadEq.hidden = false;
+        x1val.hidden = false
+        x2val.hidden = false
+        x1.hidden = false;
+        x2.hidden = false;
+      }
+  
+    }
+
+    function resetQuadEqVal(){
+      val1.disabled = false;
+        val2.disabled = false;
+        val3.disabled = false;
+        calcQuadEq.disabled = true
+        calcQuadEq.hidden = false;
+        resetQuadEq.hidden = true;        
+        x1val.hidden = true;
+        x2val.hidden = true;
+        val1.value = null;
+        val2.value = null;
+        val3.value = null;
+        x1.hidden = true;
+        x2.hidden = true;
+
+    }
+  </script>
+</html>
