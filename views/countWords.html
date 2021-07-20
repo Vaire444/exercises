@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      8. Lugeda ära mitu sõna on tekstis. Kasutaja saab sisestada mitmerealise
+      tekstis (textarea) ja süsteem kuvab kasutajale mitu sõna oli. Sõnaks
+      loetakse kõik kus enne tühikut on pikem tekst kui kahe-täheline. „Tere ja
+      mina“ on 2 sõna. „kuidas sul küll läheb“ on 4 sõna. „ei ja ja on
+      sidesõnad“ on 1 sõna.
+    </p>
+    <textarea id="inputText" cols="60" rows="10"></textarea>
+    <br /><br />
+    <button id="count">Loenda sõnu</button>
+    <p hidden="true" id="result">Sõnu tekstis:<span id="showRes"></span></p>
+  </body>
+  <script>
+    const countBtn = document.getElementById("count");
+    const textArea = document.getElementById("inputText");
+    const result = document.getElementById("result");
+    const showRes = document.getElementById("showRes");
+
+    countBtn.addEventListener("click", countWords);
+
+    function countWords() {
+      let text = textArea.value + " ";
+      let numChar = 0;
+      let numWords = 0;
+      let currentChar = "";
+      for (let i = 0; i < text.length + 1; i++) {
+        console.log(numChar + "esimene");
+        console.log(i);
+        currentChar = text[i];
+        console.log(i);
+        if (currentChar == " " || currentChar == "\n") {
+          console.log(numChar + "teine");
+          if (numChar < 3) {
+            numChar = 0;
+            console.log(numChar + "kolmas");
+          } else {
+            numWords += 1;
+            numChar = 0;
+            console.log(numChar + "neljas");
+          }
+        } else {
+          numChar += 1;
+          console.log(numChar);
+          console.log(i + "olen siin");
+          console.log(numChar + "viies" + numWords);
+        }
+      }
+      result.hidden = false;
+      showRes.hidden = false;
+      showRes.innerHTML = " " + numWords;
+    }
+  </script>
+</html>

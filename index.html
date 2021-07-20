@@ -88,6 +88,21 @@
     <h4> <a id="x1val" hidden="true" >Vastus: <br>x<sub>1</sub> = </a><a id="x1"></a><br> 
     <a id="x2val" hidden="true" >x<sub>2</sub> = </a><a id="x2"></a></h4>
 
+
+
+
+    <p>
+      8. Lugeda ära mitu sõna on tekstis. Kasutaja saab sisestada mitmerealise
+      tekstis (textarea) ja süsteem kuvab kasutajale mitu sõna oli. Sõnaks
+      loetakse kõik kus enne tühikut on pikem tekst kui kahe-täheline. „Tere ja
+      mina“ on 2 sõna. „kuidas sul küll läheb“ on 4 sõna. „ei ja ja on
+      sidesõnad“ on 1 sõna.
+    </p>
+    <textarea id="inputText" cols="60" rows="10"></textarea>
+    <br /><br />
+    <button id="count">Loenda sõnu</button>
+    <p hidden="true" id="result">Sõnu tekstis:<span id="showRes"></span></p>
+
   </body>
   <script>
     const add1 = document.getElementById("add1");
@@ -131,6 +146,11 @@
     const x1val = document.getElementById("x1val");
     const x2val = document.getElementById("x2val")
 
+    const countBtn = document.getElementById("count");
+    const textArea = document.getElementById("inputText");
+    const result = document.getElementById("result");
+    const showRes = document.getElementById("showRes");
+
     add1.addEventListener("keyup", validateAddForm);
     add2.addEventListener("keyup", validateAddForm);
     addBtn.addEventListener("click", calculateAdd);
@@ -162,6 +182,8 @@
     val3.addEventListener("keyup", validation);
     calcQuadEq.addEventListener("click", calcQuadEqVal);
     resetQuadEq.addEventListener("click", resetQuadEqVal);
+
+    countBtn.addEventListener("click", countWords);
 
     function validateAddForm() {
       let firstNum = add1.value;
@@ -444,6 +466,28 @@
         x1.hidden = true;
         x2.hidden = true;
 
+    }
+    function countWords() {
+      let text = textArea.value + " ";
+      let numChar = 0;
+      let numWords = 0;
+      let currentChar = "";
+      for (let i = 0; i < text.length + 1; i++) {
+        currentChar = text[i];
+        if (currentChar == " " || currentChar == "\n") {
+          if (numChar < 3) {
+            numChar = 0;
+          } else {
+            numWords += 1;
+            numChar = 0;
+          }
+        } else {
+          numChar += 1;
+        }
+      }
+      result.hidden = false;
+      showRes.hidden = false;
+      showRes.innerHTML = numWords;
     }
 
   </script>
