@@ -17,15 +17,18 @@
     <textarea id="inputText" cols="60" rows="10"></textarea>
     <br /><br />
     <button id="count">Loenda sõnu</button>
+    <button id="reset" hidden="true">Tühjenda</button>
     <p hidden="true" id="result">Sõnu tekstis:<span id="showRes"></span></p>
   </body>
   <script>
-    const countBtn = document.getElementById("count");
     const textArea = document.getElementById("inputText");
     const result = document.getElementById("result");
     const showRes = document.getElementById("showRes");
+    const countBtn = document.getElementById("count");
+    const resetBtn = document.getElementById("reset");
 
     countBtn.addEventListener("click", countWords);
+    resetBtn.addEventListener("click", resetTextArea);
 
     function countWords() {
       let text = textArea.value + " ";
@@ -33,30 +36,39 @@
       let numWords = 0;
       let currentChar = "";
       for (let i = 0; i < text.length + 1; i++) {
-        console.log(numChar + "esimene");
-        console.log(i);
         currentChar = text[i];
-        console.log(i);
-        if (currentChar == " " || currentChar == "\n") {
-          console.log(numChar + "teine");
+
+        if (
+          currentChar == " " ||
+          currentChar == "\n" ||
+          currentChar == "." ||
+          currentChar == "," ||
+          currentChar == "!" ||
+          currentChar == "?"
+        ) {
           if (numChar < 3) {
             numChar = 0;
-            console.log(numChar + "kolmas");
           } else {
             numWords += 1;
             numChar = 0;
-            console.log(numChar + "neljas");
           }
         } else {
           numChar += 1;
-          console.log(numChar);
-          console.log(i + "olen siin");
-          console.log(numChar + "viies" + numWords);
         }
       }
       result.hidden = false;
       showRes.hidden = false;
       showRes.innerHTML = " " + numWords;
+      countBtn.hidden = true;
+      resetBtn.hidden = false;
+    }
+
+    function resetTextArea() {
+      result.hidden = true;
+      showRes.hidden = true;
+      textArea.value = "";
+      countBtn.hidden = false;
+      resetBtn.hidden = true;
     }
   </script>
 </html>

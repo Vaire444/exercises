@@ -87,9 +87,16 @@
     <br>
     <h4> <a id="x1val" hidden="true" >Vastus: <br>x<sub>1</sub> = </a><a id="x1"></a><br> 
     <a id="x2val" hidden="true" >x<sub>2</sub> = </a><a id="x2"></a></h4>
-
-
-
+    <p>
+      7. Lugeda ära palju on tekstis mingit tähte. Kasutajal on kaks lahtrit, ühte
+       sisestab teksti ja teise tähe. Tulemuseks kirjutatakse mitu vastavat tähte
+       esines antud tekstis
+     </p>
+     <textarea id="addedText" cols="50" rows="10"></textarea><br />
+     <input type="text" id="letter" maxlength="1" />
+     <p id="countRes"></p>
+     <button id="changeChar" hidden="true">Vaheta tähte</button>
+     <button id="emptyTextArea" hidden="true">Tühjenda väljad</button>
 
     <p>
       8. Lugeda ära mitu sõna on tekstis. Kasutaja saab sisestada mitmerealise
@@ -151,6 +158,12 @@
     const result = document.getElementById("result");
     const showRes = document.getElementById("showRes");
 
+    const addedText = document.getElementById("addedText");
+    const letter = document.getElementById("letter");
+    const countRes = document.getElementById("countRes");
+    const emptyTextArea = document.getElementById("emptyTextArea");
+    const changeChar = document.getElementById("changeChar");
+
     add1.addEventListener("keyup", validateAddForm);
     add2.addEventListener("keyup", validateAddForm);
     addBtn.addEventListener("click", calculateAdd);
@@ -184,6 +197,10 @@
     resetQuadEq.addEventListener("click", resetQuadEqVal);
 
     countBtn.addEventListener("click", countWords);
+
+    emptyTextArea.addEventListener("click", resetTextArea);
+    changeChar.addEventListener("click", changeLetter);
+    letter.addEventListener("input", findLetters);
 
     function validateAddForm() {
       let firstNum = add1.value;
@@ -488,6 +505,37 @@
       result.hidden = false;
       showRes.hidden = false;
       showRes.innerHTML = numWords;
+    }
+    function findLetters() {
+      let text = addedText.value;
+      let char = letter.value;
+      let charCount = 0;
+
+      for (let i = 0; i < text.length; i++) {
+        if (text.charAt(i) == char) {
+          charCount++;
+        }
+      }
+      addedText.disabled = true;
+      countRes.hidden = false;
+      emptyTextArea.hidden = false;
+      letter.hidden = true;
+      changeChar.hidden = false;
+      countRes.innerHTML =
+        "Tähte " + '"' + char + '"' + " on tekstis " + charCount + " kord(a)";
+    }
+    function resetTextArea() {
+      addedText.value = "";
+      letter.value = "";
+      letter.hidden = false;
+      countRes.hidden = true;
+      addedText.disabled = false;
+      emptyTextArea.hidden = true;
+      changeChar.hidden = true;
+    }
+    function changeLetter() {
+      letter.value = "";
+      letter.hidden = false;
     }
 
   </script>
