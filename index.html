@@ -87,6 +87,8 @@
     <br>
     <h4> <a id="x1val" hidden="true" >Vastus: <br>x<sub>1</sub> = </a><a id="x1"></a><br> 
     <a id="x2val" hidden="true" >x<sub>2</sub> = </a><a id="x2"></a></h4>
+
+    <h3>Täheloendur</h3>
     <p>
       7. Lugeda ära palju on tekstis mingit tähte. Kasutajal on kaks lahtrit, ühte
        sisestab teksti ja teise tähe. Tulemuseks kirjutatakse mitu vastavat tähte
@@ -98,6 +100,7 @@
      <button id="changeChar" hidden="true">Vaheta tähte</button>
      <button id="emptyTextArea" hidden="true">Tühjenda väljad</button>
 
+     <h3>Testiloendur</h3>
     <p>
       8. Lugeda ära mitu sõna on tekstis. Kasutaja saab sisestada mitmerealise
       tekstis (textarea) ja süsteem kuvab kasutajale mitu sõna oli. Sõnaks
@@ -109,6 +112,18 @@
     <br /><br />
     <button id="count">Loenda sõnu</button>
     <p hidden="true" id="result">Sõnu tekstis:<span id="showRes"></span></p>
+
+<h3>Kuupäeva validaator</h3>
+    <p>
+      9. Süsteemi sisestatakse kuupäev, mis peab olema
+      formaadis pp.kk.aaaa (näiteks 14.01.2021). Süsteem kontrollib kas antud
+      tekst on kuupäev ilma teksti kuupäevaks konverteerimata (ehk et teeme
+      manuaalse kontrolli vastavalt kas pp on lubatud vahemikus, kas kk on
+      lubatud vahemikus, kas antud kuus on nii palju päevi jne Liigaastaga ei
+      pea arvestama).
+    </p>
+    <input type="text" id="date" />
+    <p id="response"></p>
 
   </body>
   <script>
@@ -164,6 +179,9 @@
     const emptyTextArea = document.getElementById("emptyTextArea");
     const changeChar = document.getElementById("changeChar");
 
+    inputDate = document.getElementById("date");
+      response = document.getElementById("response");
+
     add1.addEventListener("keyup", validateAddForm);
     add2.addEventListener("keyup", validateAddForm);
     addBtn.addEventListener("click", calculateAdd);
@@ -201,6 +219,8 @@
     emptyTextArea.addEventListener("click", resetTextArea);
     changeChar.addEventListener("click", changeLetter);
     letter.addEventListener("input", findLetters);
+
+    inputDate.addEventListener("input", validateDate);
 
     function validateAddForm() {
       let firstNum = add1.value;
@@ -537,6 +557,45 @@
       letter.value = "";
       letter.hidden = false;
     }
+
+    function validateDate() {
+        let dateFormat = inputDate.value;
+        if (
+          /^(0[1-9]|[12][0-9]|3[01])[\.](0[1-9]|1[012])[\.]\d{4}$/.test(
+            dateFormat
+          )
+        ) {
+          let insDate = inputDate.value.split(".");
+          let dd = parseInt(insDate[0]);
+          let mm = parseInt(insDate[1]);
+          let yy = parseInt(insDate[2]);
+          let listOfDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+          if (mm == 1 || mm > 2) {
+            if (dd > listOfDays[mm - 1]) {
+              response.innerHTML = "Vigane kuupäeva formaat";
+            } else {
+              response.innerHTML = "Õige kuupäeva formaat";
+            }
+          } else if ((mm = 2)) {
+            let leapYear = false;
+            if ((!(yy % 4) && yy % 400) || !(yy % 400)) {
+              leapYear = true;
+            }
+
+            if (leapYear == false && dd >= 29) {
+              response.innerHTML = "Vigane kuupäeva formaat";
+            } else if (leapYear == true && dd > 29) {
+              response.innerHTML = "Vigane kuupäeva formaat";
+            } else {
+              response.innerHTML = "Õige kuupäeva formaat";
+            }
+          } else {
+            response.innerHTML = "Vigane kuupäeva formaat";
+          }
+        } else {
+          response.innerHTML = "Vigane kuupäeva formaat";
+        }
+      }
 
   </script>
 </html>
