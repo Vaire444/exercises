@@ -1,0 +1,44 @@
+input,
+button,
+select,
+textarea {
+  border-style: double;
+  border-color: gray;
+}
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  float: left;
+  width: 50%;
+  height: 200px;
+  padding: 10px;
+}
+.boxm {
+  float: left;
+  width: 50%;
+  height: 275px;
+  padding: 10px;
+}
+.boxx {
+  float: left;
+  width: 50%;
+  height: 350;
+  padding: 10px;
+}
+.boxs {
+  float: left;
+  width: 50%;
+  height: auto;
+  padding: 10px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.ex1 {
+  margin-bottom: 100%;
+}

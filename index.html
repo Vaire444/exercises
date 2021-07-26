@@ -5,48 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harjutamiseks</title>
-    <style>
-      input,button, select, textarea {border-style: double  ;
-      border-color:gray}
-      * {
-        box-sizing: border-box;
-      }
-      
-      .box {
-        float: left;
-        width: 50%;
-        height: 200px;
-        padding: 10px;
-      }
-      .boxm{
-        float: left;
-        width: 50%;
-        height: 275px;
-        padding: 10px;
-      }
-      .boxx{
-        float: left;
-        width: 50%;
-        height: 350;
-        padding: 10px;
-      }
-      .boxs{
-        float: left;
-        width: 50%;
-        height: auto;
-        padding: 10px;
-      }
-      
-      .clearfix::after {
-        content: "";
-        clear: both;
-        display: table;
-      }
-      .ex1{
-        margin-bottom: 100%
-      }
-      
-      </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="clearfix">
@@ -154,7 +113,7 @@
      
 </div>
 <div class="boxx" style="background-color:#ddd">
-     <h3>Testiloendur</h3>
+     <h3>Tekstiloendur</h3>
     <p>
       8. Lugeda ära mitu sõna on tekstis. Kasutaja saab sisestada mitmerealise
       tekstis (textarea) ja süsteem kuvab kasutajale mitu sõna oli. Sõnaks
@@ -433,7 +392,6 @@
         }
 
     function validateForm(){
-      console.log("funk algas " + calculation.value)
       let firstNum = value1.value;
       let secNum = value2.value;
       if (calculation.value == "addition" || calculation.value == "subtraction" || calculation.value == "multiplication"
@@ -447,7 +405,6 @@
       }        
       }
       else if(calculation.value == "division" ){
-        console.log("test")
         if (firstNum != "" && secNum != "" && /[+-]?([1-9]*[.])?[0-9]+$/.test(firstNum) && /[+-]?([1-9]*[.])?[1-9]+$/.test(secNum))
          {
           calcValueBtn.disabled = false;
