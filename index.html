@@ -5,47 +5,101 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harjutamiseks</title>
+    <style>
+      input,button, select, textarea {border-style: double  ;
+      border-color:gray}
+      * {
+        box-sizing: border-box;
+      }
+      
+      .box {
+        float: left;
+        width: 50%;
+        height: 200px;
+        padding: 10px;
+      }
+      .boxm{
+        float: left;
+        width: 50%;
+        height: 275px;
+        padding: 10px;
+      }
+      .boxx{
+        float: left;
+        width: 50%;
+        height: 350;
+        padding: 10px;
+      }
+      .boxs{
+        float: left;
+        width: 50%;
+        height: auto;
+        padding: 10px;
+      }
+      
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .ex1{
+        margin-bottom: 100%
+      }
+      
+      </style>
   </head>
   <body>
-    <h3>Liitmine</h3>
-    <p>
-      1. Lihtne liitmine – teha vorm kus on kolm lahtrit: väärtus1, väärtust2 ja
-      tulemuse lahter. Lisaks on nupp, millel vajutades liidetakse lahtritest
-      väärtus1 ja 2 asjad ja pannakse lahtrisse tulemus
-    </p>
-    <input id="add1" type="text" value="" placeholder="Sisesta number " /> +
-    <input id="add2" type="text" value="" placeholder="Sisesta number" /> =
-    <input id="resultAdd" type="text" value="" placeholder="Vastus" disabled />
-    <button id="calcAdd" disabled="true">Arvuta</button>
-    <button id="emptyAdd" hidden="true">Tühjenda</button>
-    
-    <h3>Lahutamine</h3>
-    <p>2. Sama nagu punkt 1 aga nüüd teostame lahutamise</p>
-    <input id="subtract1" type="text" placeholder="Sisesta number" /> -
-    <input id="subtract2" type="text" placeholder="Sisesta number" /> =
-    <input id="subtractRes" type="text" placeholder="Vastus" disabled />
-    <button id="calcSubBtn" disabled="true">Arvuta</button>
-    <button id="resetSubtract" hidden="true">Tühjenda</button>
+    <div class="clearfix">
+      <div class="box" style="background-color:#ddd">
+        <h3>Liitmine</h3>
+        <p>
+    1. Lihtne liitmine – teha vorm kus on kolm lahtrit: väärtus1, väärtust2 ja
+    tulemuse lahter. Lisaks on nupp, millel vajutades liidetakse lahtritest
+    väärtus1 ja 2 asjad ja pannakse lahtrisse tulemus
+  </p>
+  <input id="add1" type="text" value="" placeholder="Sisesta number " /> +
+  <input id="add2" type="text" value="" placeholder="Sisesta number" /> =
+  <input id="resultAdd" type="text" value="" placeholder="Vastus" disabled />
+  <button id="calcAdd" disabled="true">Arvuta</button>
+  <button id="emptyAdd" hidden="true">Tühjenda</button>
 
-    <h3>Korrutamine</h3>
-    <p>3. Sama nagu punkt 1 aga nüüd teostame korrutamise</p>
-    <input id="multiply1" type="text" placeholder="Sisesta number" /> x
-    <input id="multiply2" type="text" placeholder="Sisesta number" /> =
-    <input id="multiplyRes" type="text" placeholder="Vastus" disabled />
-    <button id="calcMultiplyBtn" disabled="true">Arvuta</button>
-    <button id="resetMultiply" hidden="true">Tühjenda</button>
+</div>
+        
+     
+<div class="box" style="background-color:#ffffe6"> <h3>Lahutamine</h3>
+        <p>2. Sama nagu punkt 1 aga nüüd teostame lahutamise</p>
+        <input id="subtract1" type="text" placeholder="Sisesta number" /> -
+        <input id="subtract2" type="text" placeholder="Sisesta number" /> =
+        <input id="subtractRes" type="text" placeholder="Vastus" disabled />
+        <button id="calcSubBtn" disabled="true">Arvuta</button>
+        <button id="resetSubtract" hidden="true">Tühjenda</button>
 
-    <h3>Jagamine</h3>
-    <p>
-      4. Sama nagu punkt 1 aga nüüd teostame jagamise. PS! 0-ga oskab jagada
-      ainult Chuck Norris, seega proovi nii, et JS katki ei lähe
-    </p>
-    <input id="divide1" type="text" placeholder="Sisesta number" /> /
-    <input id="divide2" type="text" placeholder="Sisesta number" /> =
-    <input id="divideRes" type="text" placeholder="Vastus" disabled />
-    <button id="calcDivideBtn" disabled="true">Arvuta</button>
-    <button id="resetDivide" hidden="true">Tühjenda</button>
-
+  </div>
+</div>
+<div class="clearfix">
+  <div class="box" style="background-color:#ffffe6" >
+  <h3>Korrutamine</h3>
+  <p>3. Sama nagu punkt 1 aga nüüd teostame korrutamise</p>
+  <input id="multiply1" type="text" placeholder="Sisesta number" /> x
+  <input id="multiply2" type="text" placeholder="Sisesta number" /> =
+  <input id="multiplyRes" type="text" placeholder="Vastus" disabled />
+  <button id="calcMultiplyBtn" disabled="true">Arvuta</button>
+  <button id="resetMultiply" hidden="true">Tühjenda</button>
+</div>
+<div class="box" style="background-color:#ddd">
+  <h3>Jagamine</h3>
+  <p>
+    4. Sama nagu punkt 1 aga nüüd teostame jagamise. PS! 0-ga oskab jagada
+    ainult Chuck Norris, seega proovi nii, et JS katki ei lähe
+  </p>
+  <input id="divide1" type="text" placeholder="Sisesta number" /> /
+  <input id="divide2" type="text" placeholder="Sisesta number" /> =
+  <input id="divideRes" type="text" placeholder="Vastus" disabled />
+  <button id="calcDivideBtn" disabled="true">Arvuta</button>
+  <button id="resetDivide" hidden="true">Tühjenda</button>
+</div></div>     
+<div class="clearfix">
+  <div class="boxm" style="background-color:#ddd">
     <h3>Kalkulaator</h3>
     <p>5. Reaalne kalkulaator: Kasutajale kuvatakse väärtust1, siis valikmenüü tehetega (Liitmine, lahutamine, korrutamine ja jagamine), siis lahter teise väärtusega ning kolmas lahter kuhu tulemus kirjutatakse ning lõpuks nupp, mis teostab vastava tehte.</p>
     <input id="value1" type="text" placeholder="Sisesta number" /> 
@@ -59,7 +113,8 @@
     <input id="value" type="text" placeholder="Vastus" disabled />
     <button id="calcValueBtn" disabled="true">Arvuta</button>
     <button id="resetValue" hidden="true">Tühjenda</button>
-
+  </div>
+  <div class="boxm" style="background-color:#ffffe6">
     <h3>Ruutvõrrand</h3>
     <p>
       6. Ruutvõrrandi lahendamine.
@@ -68,14 +123,10 @@
         target="_blank"
         >Ruutvõrrand ja selle lahendamine</a
       >
-      Tulemuseks kuvada mõlemad x väärtused
+      Tulemuseks kuvada mõlemad x väärtused.
       <br />
-      Standardne ruutvõrrandi vorm on:
-      <br />
-      ax<sup>2</sup> + bx + c = 0, kus a on ruutliikme kordaja (a &#8800 0),b on lineaarliikme kordaja ja c on vabaliige
+      Standardne ruutvõrrandi vorm on: ax<sup>2</sup> + bx + c = 0, kus a on ruutliikme kordaja (a &#8800 0),b on lineaarliikme kordaja ja c on vabaliige.
     </p>
-
-    
     <input id="val1" type="text" value="" , placeholder="Sisesta number a" />x<sup
       >2</sup
     >
@@ -83,23 +134,26 @@
     <input id="val3" type="text" value="" , placeholder="Sisesta number c" /> = 0
     <button id="calcQuadEq" disabled="true">Arvuta x väärtused</button>
     <button id="resetQuadEq" hidden="true">Tühjenda</button>
-    <br>
-    <br>
     <h4> <a id="x1val" hidden="true" >Vastus: <br>x<sub>1</sub> = </a><a id="x1"></a><br> 
     <a id="x2val" hidden="true" >x<sub>2</sub> = </a><a id="x2"></a></h4>
-
+  </div>
+</div>   
+<div class="clearfix">
+  <div class="boxx" style="background-color:#ffffe6" >
     <h3>Täheloendur</h3>
     <p>
-      7. Lugeda ära palju on tekstis mingit tähte. Kasutajal on kaks lahtrit, ühte
-       sisestab teksti ja teise tähe. Tulemuseks kirjutatakse mitu vastavat tähte
+      7. Lugeda ära palju on tekstis mingit tähte.<br> Kasutajal on kaks lahtrit, ühte
+       sisestab teksti ja teise tähe.<br> Tulemuseks kirjutatakse mitu vastavat tähte
        esines antud tekstis
      </p>
-     <textarea id="addedText" cols="50" rows="10"></textarea><br />
-     <input type="text" id="letter" maxlength="1" />
-     <p id="countRes"></p>
-     <button id="changeChar" hidden="true">Vaheta tähte</button>
-     <button id="emptyTextArea" hidden="true">Tühjenda väljad</button>
-
+     <div class="boxs"><textarea id="addedText" cols="40" rows="10" placeholder="Sisesta tekst"></textarea><br /></div>
+     <div class="boxs"><input type="text" id="letter" maxlength="1" placeholder="Sisesta täht"/>
+      <p id="countRes"></p>
+      <button id="changeChar" hidden="true">Vaheta tähte</button>
+      <button id="emptyTextArea" hidden="true">Tühjenda väljad</button></div>
+     
+</div>
+<div class="boxx" style="background-color:#ddd">
      <h3>Testiloendur</h3>
     <p>
       8. Lugeda ära mitu sõna on tekstis. Kasutaja saab sisestada mitmerealise
@@ -108,22 +162,33 @@
       mina“ on 2 sõna. „kuidas sul küll läheb“ on 4 sõna. „ei ja ja on
       sidesõnad“ on 1 sõna.
     </p>
-    <textarea id="inputText" cols="60" rows="10"></textarea>
-    <br /><br />
-    <button id="count">Loenda sõnu</button>
-    <p hidden="true" id="result">Sõnu tekstis:<span id="showRes"></span></p>
+    <div class="boxs">
+      <textarea id="inputText" cols="40" rows="10" placeholder="Sisesta tekst"></textarea>
+    </div>
+  
+    <div class="boxs"><button id="count" >Loenda sõnu</button>
+      <button id="reset" hidden="true">Tühjenda</button>
+      <p hidden="true" id="result">Sõnu tekstis:<span id="showRes"></span></p></div>
+    
+</div>
+</div>
+<div class="clearfix">
+<div class="boxs" style="background-color:#ddd" >
+  <h3>Kuupäeva validaator</h3>
+  <div class="boxs">  <a>
+    9. Süsteemi sisestatakse kuupäev, mis peab olema
+    formaadis pp.kk.aaaa (näiteks 14.01.2021). Süsteem kontrollib kas antud
+    tekst on kuupäev ilma teksti kuupäevaks konverteerimata (ehk et teeme
+    manuaalse kontrolli vastavalt kas pp on lubatud vahemikus, kas kk on
+    lubatud vahemikus, kas antud kuus on nii palju päevi jne Liigaastaga ei
+    pea arvestama). <br>NB! arvestab liigaastat ;) 
+  </a></div>
+  <div class="boxs"><input type="text" id="date" placeholder="Sisesta kuupäev"/>
+    <p id="response"></p></div>
 
-<h3>Kuupäeva validaator</h3>
-    <p>
-      9. Süsteemi sisestatakse kuupäev, mis peab olema
-      formaadis pp.kk.aaaa (näiteks 14.01.2021). Süsteem kontrollib kas antud
-      tekst on kuupäev ilma teksti kuupäevaks konverteerimata (ehk et teeme
-      manuaalse kontrolli vastavalt kas pp on lubatud vahemikus, kas kk on
-      lubatud vahemikus, kas antud kuus on nii palju päevi jne Liigaastaga ei
-      pea arvestama).
-    </p>
-    <input type="text" id="date" />
-    <p id="response"></p>
+</div>
+</div>
+
 
   </body>
   <script>
@@ -168,10 +233,11 @@
     const x1val = document.getElementById("x1val");
     const x2val = document.getElementById("x2val")
 
-    const countBtn = document.getElementById("count");
     const textArea = document.getElementById("inputText");
     const result = document.getElementById("result");
     const showRes = document.getElementById("showRes");
+    const countBtn = document.getElementById("count");
+    const resetBtn = document.getElementById("reset");
 
     const addedText = document.getElementById("addedText");
     const letter = document.getElementById("letter");
@@ -179,8 +245,8 @@
     const emptyTextArea = document.getElementById("emptyTextArea");
     const changeChar = document.getElementById("changeChar");
 
-    inputDate = document.getElementById("date");
-      response = document.getElementById("response");
+    const inputDate = document.getElementById("date");
+    const response = document.getElementById("response");
 
     add1.addEventListener("keyup", validateAddForm);
     add2.addEventListener("keyup", validateAddForm);
@@ -215,6 +281,7 @@
     resetQuadEq.addEventListener("click", resetQuadEqVal);
 
     countBtn.addEventListener("click", countWords);
+    resetBtn.addEventListener("click", resetTextAreaWord);
 
     emptyTextArea.addEventListener("click", resetTextArea);
     changeChar.addEventListener("click", changeLetter);
@@ -334,7 +401,7 @@
     function validateDivideForm() {
       let firstNum = divide1.value;
       let secNum = divide2.value;
-      if (firstNum != "" && secNum != "" && /[+-]?([0-9]*[.])?[0-9]+$/.test(firstNum) && /[+-]?([0-9]*[.])?[0-9]+$/.test(secNum)) {
+      if (firstNum != "" && secNum != "" && /[+-]?([0-9]*[.])?[0-9]+$/.test(firstNum) && /[+-]?([1-9]*[.])?[1-9]+$/.test(secNum)) {
         calcDivideBtn.disabled = false;
             } else {
               calcDivideBtn.disabled = true;
@@ -511,7 +578,15 @@
       let currentChar = "";
       for (let i = 0; i < text.length + 1; i++) {
         currentChar = text[i];
-        if (currentChar == " " || currentChar == "\n") {
+
+        if (
+          currentChar == " " ||
+          currentChar == "\n" ||
+          currentChar == "." ||
+          currentChar == "," ||
+          currentChar == "!" ||
+          currentChar == "?"
+        ) {
           if (numChar < 3) {
             numChar = 0;
           } else {
@@ -524,8 +599,18 @@
       }
       result.hidden = false;
       showRes.hidden = false;
-      showRes.innerHTML = numWords;
+      showRes.innerHTML = " " + numWords;
+      countBtn.hidden = true;
+      resetBtn.hidden = false;
     }
+    function resetTextAreaWord() {
+      result.hidden = true;
+      showRes.hidden = true;
+      textArea.value = "";
+      countBtn.hidden = false;
+      resetBtn.hidden = true;
+    }
+
     function findLetters() {
       let text = addedText.value;
       let char = letter.value;
